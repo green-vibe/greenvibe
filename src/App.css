@@ -1,38 +1,432 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Pretendard", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", sans-serif;
+  color: #222222;
+  letter-spacing: -0.2px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ////////// */
+/* background */
+/* ////////// */
+.bg-light-green {
+  background-color: #edfff6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg-light-yellow {
+  background-color: #fffeed;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bg-light-blue {
+  background-color: #edfdff;
+}
+
+/* ///////// */
+/* // nav // */
+/* ///////// */
+.box-nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+  padding: 0 22px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  z-index: 1;
+}
+
+/* main */
+.box-nav .btn-nav-main {
+  height: 20px;
+  background: none;
+  cursor: pointer;
+}
+
+.box-nav .btn-nav-main > img {
+  height: 20px;
+}
+
+/* connect */
+.box-nav .btn-nav-connect {
+  height: 32px;
+  padding: 0 13px;
+  background: none;
+  border: 2px solid #168249;
+  border-radius: 10px;
+}
+
+.box-nav .btn-nav-connect > img {
+  height: 10px;
+}
+
+/* profile */
+.box-nav .btn-nav-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 2px solid #168249;
+  border-radius: 10px;
+  line-height: 32px;
+}
+
+.box-nav .btn-nav-profile > img {
+  width: 16px;
+}
+
+/* ///////// */
+/* Main Page */
+/* ///////// */
+.box-main {
+  padding-top: 64px;
+}
+
+.box-main .box-main-title {
+  position: relative;
+}
+
+.box-main .box-main-title > img {
+  width: 100%;
+}
+
+.box-main .box-main-title .box-main-txt {
+  position: absolute;
+  top: 30px;
+  left: 22px;
+}
+
+.box-main .box-main-title .box-main-txt > span {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 16px;
+}
+
+.box-main .box-main-title .box-main-txt > span.txt-main-case {
+  font-weight: 700;
+}
+
+/* 개인화 */
+.box-not-connect,
+.box-connect {
+  margin-top: 30px;
+  padding: 0 22px;
+}
+
+.box-not-connect > .txt-title,
+.box-connect > .txt-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box-not-connect > .txt-subtitle {
+  margin-top: 15px;
+  color: #aaaaaa;
+  font-size: 14px;
+  line-height: 19.6px;
+}
+
+.box-not-connect .box-challenge-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.box-not-connect .box-challenge-list .box-challenge,
+.box-connect .box-challenge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+
+.box-not-connect .box-challenge-list .box-challenge .box-challenge-img,
+.box-connect .box-challenge .box-challenge-img {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+.box-not-connect .box-challenge-list .box-challenge .box-challenge-img > img,
+.box-connect .box-challenge .box-challenge-img > img {
+  width: 80px;
+}
+
+.box-not-connect .box-challenge-list .box-challenge .box-challenge-txt,
+.box-connect .box-challenge .box-challenge-txt {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-not-connect
+  .box-challenge-list
+  .box-challenge
+  .box-challenge-txt
+  > .txt-title,
+.box-connect .box-challenge .box-challenge-txt > .txt-title {
+  margin-bottom: 6px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.box-not-connect
+  .box-challenge-list
+  .box-challenge
+  .box-challenge-txt
+  > .txt-subtitle,
+.box-connect .box-challenge .box-challenge-txt > .txt-subtitle {
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+.box-connect .btn-challenge {
+  width: 100%;
+  height: 50px;
+  margin-top: 15px;
+  background: none;
+  border: 1px solid #168249;
+  border-radius: 10px;
+  color: #168249;
+  font-size: 16px;
+}
+
+.box-connect .box-challenge {
+  margin-top: 15px;
+}
+
+.box-another-challenger {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.box-another-challenger > .txt-title {
+  padding: 0 22px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box-another-challenger .box-another-challenge-img {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  font-size: 0;
+}
+
+.box-another-challenger .box-another-challenge-img .box-upload-challenge-img {
+  display: flex;
+  overflow: hidden;
+}
+
+.box-another-challenger
+  .box-another-challenge-img
+  .box-upload-challenge-img
+  > img {
+  min-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* //////////// */
+/* Profile Page */
+/* //////////// */
+.box-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 22px;
+  padding-top: 64px;
+}
+
+.box-profile .box-profile-img {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+  border-radius: 50px;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.box-profile .box-profile-img > img {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.box-profile .txt-nickname {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box-profile .box-balance {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  margin-top: 30px;
+  padding: 35px 0;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+}
+
+.box-profile .box-balance .box-balance-left,
+.box-profile .box-balance .box-balance-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.box-profile .box-balance .box-balance-left {
+  border-right: 1px solid #dddddd;
+}
+
+.box-profile .box-balance .box-balance-left .txt-balance,
+.box-profile .box-balance .box-balance-right .txt-balance {
+  margin-bottom: 10px;
+  color: #168249;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box-profile .box-balance .box-balance-left .txt-balance-exp,
+.box-profile .box-balance .box-balance-right .txt-balance-exp {
+  font-size: 14px;
+}
+
+.box-profile .box-challenge-progress,
+.box-profile .box-challenge-vote {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.box-profile .box-challenge-progress > .txt-title,
+.box-profile .box-challenge-vote > .txt-title {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.box-profile .box-challenge-progress > .box-challenge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+
+.box-profile .box-challenge-progress > .box-challenge > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.box-profile .box-challenge-progress > .box-challenge .box-challenge-img {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  border-radius: 10px;
+}
+
+.box-profile .box-challenge-progress > .box-challenge .box-challenge-img > img {
+  width: 80px;
+}
+
+.box-profile .box-challenge-progress > .box-challenge .box-challenge-txt {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-profile
+  .box-challenge-progress
+  > .box-challenge
+  .box-challenge-txt
+  > .txt-title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.box-profile
+  .box-challenge-progress
+  > .box-challenge
+  .box-challenge-txt
+  > .txt-subtitle {
+  display: inline-block;
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+.box-profile
+  .box-challenge-progress
+  > .box-challenge
+  .box-challenge-txt
+  > .txt-subtitle:last-child {
+  margin-top: 3px;
+}
+
+.box-profile .box-challenge-progress > .box-challenge .btn-challenge-detail {
+  width: 100%;
+  height: 44px;
+  margin-top: 20px;
+  background: none;
+  border: 1px solid #168249;
+  border-radius: 10px;
+  color: #168249;
+  font-size: 16px;
+}
+
+.box-profile .box-challenge-vote .btn-challenge-vote {
+  width: 100%;
+  height: 50px;
+  background-color: #168249;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* ////// */
+/* Footer */
+/* ////// */
+.box-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  padding: 35px;
+  border: 1px solid #dddddd;
+}
+
+.box-footer .box-footer-top {
+  margin-bottom: 8px;
+}
+
+.box-footer div .btn-footer {
+  padding: 0 8px;
+  background: none;
+  color: #aaaaaa;
+}
+
+.box-footer .lg-greenvibe {
+  margin-top: 30px;
 }
