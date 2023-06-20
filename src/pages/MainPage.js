@@ -12,7 +12,7 @@ import imgZero from "../images/img_zero.jpg";
 import imgZero2 from "../images/img_zero2.jpg";
 
 const MainPage = ({ fNickname }) => {
-  let currentAccounts = useSelector((state) => state.currentAccounts);
+  let currentAccounts = useSelector((state) => state.user.currentAccounts);
 
   // Nickname 불러오기
   const [nickname, setNickname] = useState("");
