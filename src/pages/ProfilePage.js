@@ -5,10 +5,8 @@ import { useNavigate } from "react-router-dom";
 import imgZeroWaste from "../images/img_zero_waste.svg";
 
 const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
-  // state
-  let currentAccounts = useSelector((state) => state.currentAccounts);
-  let profileImageUrl = useSelector((state) => state.profileImageUrl);
-  let ethBalance = useSelector((state) => state.ethBalance);
+  // userState
+  let userState = useSelector((state) => state.user);
 
   const [nickname, setNickname] = useState("");
   const [tokenBalance, setTokenBalance] = useState("");
@@ -18,15 +16,15 @@ const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
       const fetchedImageUrl = fetchImageMetadata();
       const real = await fetchedImageUrl;
       if (real) {
-        profileImageUrl = fetchedImageUrl;
+        userState.profileImageUrl = fetchedImageUrl;
       }
     };
 
     initialize();
-  }, [fetchImageMetadata, profileImageUrl]);
+  }, [fetchImageMetadata, userState.profileImageUrl]);
 
   useEffect(() => {
-    if (currentAccounts && currentAccounts.length > 0) {
+    if (userState.currentAccounts && userState.currentAccounts.length > 0) {
       fTokenBalanceOf().then((balance) => setTokenBalance(balance));
 
       const fetchNickname = async () => {
@@ -36,17 +34,19 @@ const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
 
       fetchNickname();
     }
-  }, [currentAccounts]);
+  }, [userState.currentAccounts]);
 
   return (
     <div className="box-profile">
       <div className="box-profile-img">
-        <img src={profileImageUrl} alt="NFT 이미지" />
+        <img src={userState.profileImageUrl} alt="NFT 이미지" />
       </div>
       <span className="txt-nickname">{nickname}</span>
       <div className="box-balance">
         <div className="box-balance-left">
-          <span className="txt-balance">{Number(ethBalance).toFixed(4)}</span>
+          <span className="txt-balance">
+            {Number(userState.ethBalance).toFixed(4)}
+          </span>
           <span className="txt-balance-exp">보유 MATIC</span>
         </div>
         <div className="box-balance-right">

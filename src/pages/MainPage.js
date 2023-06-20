@@ -65,7 +65,7 @@ const MainPage = ({ fNickname }) => {
           <span className="txt-main-case">지금 함께 도전해요!</span>
         </div>
       </div>
-      {/* Not Connect */}
+      {/* Connect 여부 검사 */}
       {currentAccounts && currentAccounts.length > 0 ? (
         /* Connect */
         <div>
@@ -86,6 +86,7 @@ const MainPage = ({ fNickname }) => {
               </div>
             </div>
           </div>
+          {/* 도전자 없을 때 안 보이게 변경 필요 */}
           <div className="box-another-challenger">
             <p className="txt-title">
               지구를 지키는
@@ -116,6 +117,7 @@ const MainPage = ({ fNickname }) => {
           </div>
         </div>
       ) : (
+        // Not Connect
         <div className="box-not-connect">
           <span className="txt-title">지금 참여하고 지구를 지켜요!</span>
           <p className="txt-subtitle">

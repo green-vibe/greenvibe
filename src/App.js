@@ -85,19 +85,8 @@ function App() {
   ///////////
   // State //
   ///////////
-  let web3 = useSelector((state) => state.web3);
-  let currentAccounts = useSelector((state) => state.currentAccounts);
-  let ethBalance = useSelector((state) => state.ethBalance);
-
-  ////////////////////
-  // Contract State //
-  ////////////////////
-  const ERC721contractAddress = useSelector(
-    (state) => state.ERC721contractAddress
-  );
-  const ERC20contractAddress = useSelector(
-    (state) => state.ERC20contractAddress
-  );
+  let userState = useSelector((state) => state.user);
+  let contractState = useSelector((state) => state.contract);
 
   ///////////////////////////////////
   // Set Connect Metamask function //
@@ -105,7 +94,7 @@ function App() {
 
   // web3
   const getWeb3 = () => {
-    return web3;
+    return userState.web3;
   };
 
   // 컨트랙트의 기본 요소를 가져옴
@@ -193,10 +182,10 @@ function App() {
 
   // 이더리움 금액 가져오기
   const getEthBalance = async () => {
-    if (web3 !== null) {
-      const accounts = await web3.eth.getAccounts();
-      const balanceWei = await web3.eth.getBalance(accounts[0]);
-      const balanceEther = web3.utils.fromWei(balanceWei, "ether");
+    if (userState.web3 !== null) {
+      const accounts = await userState.web3.eth.getAccounts();
+      const balanceWei = await userState.web3.eth.getBalance(accounts[0]);
+      const balanceEther = userState.web3.utils.fromWei(balanceWei, "ether");
 
       dispatch({
         type: "SET_ETH_BALANCE",
@@ -211,7 +200,7 @@ function App() {
       await getEthBalance();
     }
     gEthBalance();
-  }, [currentAccounts]);
+  }, [userState.currentAccounts]);
 
   ///////////////
   //   ERC20   //
@@ -220,9 +209,12 @@ function App() {
   // 토큰 밸런스
   const fTokenBalanceOf = async () => {
     const web3 = getWeb3();
-    const tokenContract = getTokenContract(ERC20, ERC20contractAddress);
+    const tokenContract = getTokenContract(
+      ERC20,
+      contractState.ERC20contractAddress
+    );
     const tokenBalanceOfWei = await tokenContract.methods
-      .balanceOf(currentAccounts[0])
+      .balanceOf(userState.currentAccounts[0])
       .call();
     const tokenBalanceOfEther = web3.utils.fromWei(tokenBalanceOfWei, "ether");
     const tokenBalanceOfTruncated =
@@ -237,9 +229,12 @@ function App() {
 
   // 닉네임 함수
   const fNickname = async () => {
-    const tokenContract = getTokenContract(ERC721, ERC721contractAddress);
+    const tokenContract = getTokenContract(
+      ERC721,
+      contractState.ERC721contractAddress
+    );
     const myNickname = await tokenContract.methods
-      .getNickname(currentAccounts[0])
+      .getNickname(userState.currentAccounts[0])
       .call();
 
     return myNickname;
@@ -247,10 +242,14 @@ function App() {
 
   // image를 fetch하는 함수
   const fetchImageMetadata = async () => {
-    if (!currentAccounts || currentAccounts.length === 0) return;
+    if (!userState.currentAccounts || userState.currentAccounts.length === 0)
+      return;
 
     const web3 = getWeb3();
-    const tokenContract = new web3.eth.Contract(ERC721, ERC721contractAddress);
+    const tokenContract = new web3.eth.Contract(
+      ERC721,
+      contractState.ERC721contractAddress
+    );
 
     // 총 토큰 수를 조회합니다.
     const totalSupply = await tokenContract.methods.totalSupply().call();
@@ -260,7 +259,7 @@ function App() {
       const owner = await tokenContract.methods.ownerOf(tokenId).call();
 
       // 만약 토큰의 소유자가 사용자와 일치한다면, 해당 토큰 ID를 처리합니다.
-      if (owner === currentAccounts[0]) {
+      if (owner === userState.currentAccounts[0]) {
         const metadataUrl = `https://lime-wonderful-skunk-419.mypinata.cloud/ipfs/QmPJHgfcuSffRa9ZmAWoQsMZDMe8KMyP2G4dNddJBZutSi/${tokenId}`;
         try {
           const response = await fetch(metadataUrl);
