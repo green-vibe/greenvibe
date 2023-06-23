@@ -40,7 +40,7 @@
 /**
  * Greenvibe
  * @developer Sueun Cho, Rok Kwak, Eunbeen Jung
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 ////////////////////
@@ -48,7 +48,7 @@
 ////////////////////
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Web3 from "web3";
 
 ////////////////////////
@@ -56,19 +56,21 @@ import Web3 from "web3";
 ////////////////////////
 import ERC20 from "./abi/ERC20.json";
 import ERC721 from "./abi/ERC721.json";
-import ERC1155 from "./abi/ERC1155.json";
-import Reward from "./abi/Reward.json";
+// import ERC1155 from "./abi/ERC1155.json";
+// import Reward from "./abi/Reward.json";
 
 /////////////////
 // Page import //
 /////////////////
 import MainPage from "./pages/MainPage";
 import ProfilePage from "./pages/ProfilePage";
+import TokenExchangePage from "./pages/TokenExchangePage";
 
 //////////////////////
 // Component import //
 //////////////////////
 import Nav from "./components/layout/Nav";
+import Nav2Depth from "./components/layout/Nav2Depth";
 import Footer from "./components/layout/Footer";
 
 /////////
@@ -81,6 +83,7 @@ import "./App.css";
 //////////////////
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   ///////////
   // State //
@@ -280,7 +283,12 @@ function App() {
 
   return (
     <div>
-      <Nav connectToMetaMask={connectToMetaMask} />
+      {location.pathname.substring(1, 6) !== "token" ? (
+        <Nav connectToMetaMask={connectToMetaMask} />
+      ) : (
+        <Nav2Depth location={location} />
+      )}
+
       <Routes>
         <Route path="/" element={<MainPage fNickname={fNickname} />} />
         <Route
@@ -293,6 +301,7 @@ function App() {
             />
           }
         />
+        <Route path="/token/exchange" element={<TokenExchangePage />} />
       </Routes>
       <Footer />
     </div>

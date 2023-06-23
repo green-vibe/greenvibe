@@ -2,9 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import lgGreenToken from "../images/lg_greentoken.svg";
 import imgZeroWaste from "../images/img_zero_waste.svg";
 
 const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
+  // navigate
+  const navigate = useNavigate();
+
+  const goToTokenExchange = () => {
+    navigate("/token/exchange");
+  };
+
   // userState
   let userState = useSelector((state) => state.user);
 
@@ -21,7 +29,7 @@ const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
     };
 
     initialize();
-  }, [fetchImageMetadata, userState.profileImageUrl]);
+  }, [fetchImageMetadata, userState]);
 
   useEffect(() => {
     if (userState.currentAccounts && userState.currentAccounts.length > 0) {
@@ -43,15 +51,28 @@ const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
       </div>
       <span className="txt-nickname">{nickname}</span>
       <div className="box-balance">
-        <div className="box-balance-left">
-          <span className="txt-balance">
-            {Number(userState.ethBalance).toFixed(4)}
-          </span>
-          <span className="txt-balance-exp">보유 MATIC</span>
+        <div className="box-balance-top">
+          <div className="box-balance-token">
+            <div className="img-token">
+              <img src={lgGreenToken} alt="tokenlogo" />
+            </div>
+            <div className="box-token-txt">
+              <span className="txt-balance-exp">GreenToken</span>
+              <span className="txt-balance">{tokenBalance} GRN</span>
+            </div>
+          </div>
+          <div className="box-btn-token">
+            <button className="btn-token" onClick={goToTokenExchange}>
+              교환
+            </button>
+            <button className="btn-token">전송</button>
+          </div>
         </div>
-        <div className="box-balance-right">
-          <span className="txt-balance">{tokenBalance}</span>
-          <span className="txt-balance-exp">보유 Token</span>
+        <div className="box-balance-matic">
+          <span className="txt-balance-exp">보유 MATIC</span>
+          <span className="txt-balance">
+            {Number(userState.ethBalance).toFixed(4)} MATIC
+          </span>
         </div>
       </div>
       <div className="box-challenge-progress">
