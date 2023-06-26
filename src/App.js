@@ -301,7 +301,10 @@ function App() {
             />
           }
         />
-        <Route path="/token/exchange" element={<TokenExchangePage />} />
+        <Route
+          path="/token/exchange"
+          element={<TokenExchangePage fTokenBalanceOf={fTokenBalanceOf} />}
+        />
       </Routes>
       <Footer />
     </div>

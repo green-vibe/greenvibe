@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+///////////////////////
+// import components //
+///////////////////////
+import SolidButton from "../components/Button/SolidButton";
+
+///////////////////
+// import images //
+///////////////////
 import lgGreenToken from "../images/lg_greentoken.svg";
 import imgZeroWaste from "../images/img_zero_waste.svg";
 
@@ -93,7 +101,7 @@ const ProfilePage = ({ fTokenBalanceOf, fNickname, fetchImageMetadata }) => {
       </div>
       <div className="box-challenge-vote">
         <span className="txt-title">다른 도전자를 응원해주세요!</span>
-        <button className="btn-challenge-vote">응원하러 가기</button>
+        <SolidButton value="응원하러 가기" disabled={false} />
       </div>
     </div>
   );

@@ -364,7 +364,7 @@
 
 .box-profile .box-balance .box-balance-top .box-btn-token {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: 20px;
 }
 
@@ -482,12 +482,74 @@
   font-size: 16px;
 }
 
-.box-profile .box-challenge-vote .btn-challenge-vote {
-  width: 100%;
-  height: 50px;
-  background-color: #168249;
+/* ////////////// */
+/* Token Exchange */
+/* ////////////// */
+.box-token-exchange {
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+  padding: 64px 22px 0;
+}
+
+.box-token-exchange .txt-token-exchange-exp {
+  margin-top: 30px;
+  color: #aaaaaa;
+  font-size: 14px;
+}
+
+.box-token-exchange .box-token-amount {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.box-token-exchange .box-token-amount .box-token-amount-txt {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-token-exchange .box-token-amount .box-token-amount-txt > span {
+  font-size: 14px;
+}
+
+.box-token-exchange
+  .box-token-amount
+  .box-token-amount-txt
+  .txt-token-amount-exp,
+.box-token-exchange .box-token-amount .box-token-amount-txt > span > span {
+  font-weight: 600;
+}
+
+.box-token-exchange .box-token-amount > input {
+  margin-top: 15px;
+  padding: 20px 22px;
+  border: 1px solid #eeeeee;
   border-radius: 10px;
-  color: #ffffff;
+  font-size: 16px;
+}
+
+.box-token-exchange .box-token-amount > input::placeholder {
+  color: #dddddd;
+}
+
+.box-token-exchange .box-matic-amount {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.box-token-exchange .box-matic-amount > span {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.box-token-exchange .box-matic-amount > input {
+  margin-top: 15px;
+  padding: 20px 22px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  color: #aaaaaa;
   font-size: 16px;
 }
 
@@ -515,4 +577,22 @@
 
 .box-footer .lg-greenvibe {
   margin-top: 30px;
+}
+
+/* //////////////// */
+/* Button Component */
+/* //////////////// */
+
+/* Solid Button */
+.btn-solid {
+  width: 100%;
+  padding: 20px 0;
+  background-color: #168249;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.btn-solid:disabled {
+  background-color: #dddddd;
 }
