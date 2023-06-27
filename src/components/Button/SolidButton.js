@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const SolidButton = ({ value, disabled }) => {
+const SolidButton = ({ value, disabled, onClick }) => {
   useEffect(() => {
     const btnSelector = document.querySelector(".btn-solid");
 
@@ -11,7 +11,11 @@ const SolidButton = ({ value, disabled }) => {
     }
   }, [disabled]);
 
-  return <button className="btn-solid">{value}</button>;
+  return (
+    <button className="btn-solid" onClick={onClick}>
+      {value}
+    </button>
+  );
 };
 
 export default SolidButton;

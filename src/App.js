@@ -40,7 +40,7 @@
 /**
  * Greenvibe
  * @developer Sueun Cho, Rok Kwak, Eunbeen Jung
- * @version 1.1.0
+ * @version 1.2.1
  */
 
 ////////////////////
@@ -57,7 +57,7 @@ import Web3 from "web3";
 import ERC20 from "./abi/ERC20.json";
 import ERC721 from "./abi/ERC721.json";
 // import ERC1155 from "./abi/ERC1155.json";
-// import Reward from "./abi/Reward.json";
+import Reward from "./abi/Reward.json";
 
 /////////////////
 // Page import //
@@ -205,6 +205,31 @@ function App() {
     gEthBalance();
   }, [userState.currentAccounts]);
 
+  // Send Transcation -> 쉽게 생각해서 메타마스크 화면 엶 (이더 보낼꺼냐 아니면 스마트 컨트랙트 작동 시킬꺼냐)
+  const sendTransaction = async (from, to, data, value) => {
+    const web3 = getWeb3();
+    try {
+      await window.ethereum.request({
+        method: "eth_sendTransaction",
+        params: [
+          {
+            from,
+            to,
+            data,
+            value: value
+              ? web3.utils.toHex(web3.utils.toWei(value))
+              : undefined,
+          },
+          console.log(value),
+        ],
+      });
+      console.log(value);
+      alert("Transaction successful!");
+    } catch (e) {
+      alert("Oops! Transaction failed!");
+    }
+  };
+
   ///////////////
   //   ERC20   //
   ///////////////
@@ -224,6 +249,29 @@ function App() {
       Math.floor(parseFloat(tokenBalanceOfEther) * 10000) / 10000;
     console.log(tokenBalanceOfEther);
     return tokenBalanceOfTruncated;
+  };
+
+  // TokenApprove를 통해서 토큰을 MATIC으로 바꾸기 전에 실행해야하는 함수
+  const fTokenApprove = async (getToken) => {
+    const tokenContract = getTokenContract(
+      ERC20,
+      contractState.ERC20contractAddress
+    );
+    //vote 또한 인자로 가져와야함
+    try {
+      const data = tokenContract.methods
+        .approve(contractState.rewardContractAddress, getToken)
+        .encodeABI();
+
+      await sendTransaction(
+        userState.currentAccounts[0],
+        contractState.ERC20contractAddress,
+        data,
+        undefined
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   ////////////////
@@ -254,14 +302,14 @@ function App() {
       contractState.ERC721contractAddress
     );
 
-    // 총 토큰 수를 조회합니다.
+    // 총 토큰 수를 조회
     const totalSupply = await tokenContract.methods.totalSupply().call();
 
-    // 총 토큰 수만큼 반복하여, 각 토큰의 소유자를 확인합니다.
+    // 총 토큰 수만큼 반복하여, 각 토큰의 소유자를 확인
     for (let tokenId = 0; tokenId < totalSupply; tokenId++) {
       const owner = await tokenContract.methods.ownerOf(tokenId).call();
 
-      // 만약 토큰의 소유자가 사용자와 일치한다면, 해당 토큰 ID를 처리합니다.
+      // 만약 토큰의 소유자가 사용자와 일치한다면, 해당 토큰 ID를 처리
       if (owner === userState.currentAccounts[0]) {
         const metadataUrl = `https://lime-wonderful-skunk-419.mypinata.cloud/ipfs/QmPJHgfcuSffRa9ZmAWoQsMZDMe8KMyP2G4dNddJBZutSi/${tokenId}`;
         try {
@@ -272,12 +320,41 @@ function App() {
             type: "SET_IMG_URL",
             payload: { profileImageUrl: imageUrl },
           });
-          // 본인의 토큰을 찾았으므로 반복문을 종료합니다.
+          // 본인의 토큰을 찾았으므로 반복문을 종료
           break;
         } catch (error) {
           console.error("Error fetching metadata:", error);
         }
       }
+    }
+  };
+
+  ////////////////
+  //   Reward   //
+  ////////////////
+
+  // 토큰을 MATIC으로 교환하는 함수
+  const fExchangeEther = async (getPrice) => {
+    const web3 = getWeb3();
+    const contract = getTokenContract(
+      Reward,
+      contractState.rewardContractAddress
+    );
+
+    const tokenToSend = web3.utils.toWei(String(getPrice), "wei");
+    await fTokenApprove(tokenToSend);
+
+    try {
+      const data = contract.methods.exchangeEther(tokenToSend).encodeABI();
+
+      await this.sendTransaction(
+        userState.currentAccounts[0],
+        contractState.rewardContractAddress,
+        data,
+        tokenToSend
+      );
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
@@ -288,7 +365,7 @@ function App() {
       ) : (
         <Nav2Depth location={location} />
       )}
-
+      {/* 추후 로그인 하지 않으면 볼 수 없는 화면 체크 예정 */}
       <Routes>
         <Route path="/" element={<MainPage fNickname={fNickname} />} />
         <Route
@@ -303,7 +380,12 @@ function App() {
         />
         <Route
           path="/token/exchange"
-          element={<TokenExchangePage fTokenBalanceOf={fTokenBalanceOf} />}
+          element={
+            <TokenExchangePage
+              fTokenBalanceOf={fTokenBalanceOf}
+              fExchangeEther={fExchangeEther}
+            />
+          }
         />
       </Routes>
       <Footer />
