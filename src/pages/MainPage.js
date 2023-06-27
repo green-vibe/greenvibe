@@ -10,9 +10,14 @@ import imgBicycle from "../images/img_bicycle.svg";
 import imgZeroWaste from "../images/img_zero_waste.svg";
 import imgZero from "../images/img_zero.jpg";
 import imgZero2 from "../images/img_zero2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = ({ fNickname }) => {
   let currentAccounts = useSelector((state) => state.user.currentAccounts);
+  const navigate = useNavigate();
+  const goToActivityPage = () => {
+    navigate("/activity");
+  };
 
   // Nickname 불러오기
   const [nickname, setNickname] = useState("");
@@ -74,7 +79,9 @@ const MainPage = ({ fNickname }) => {
               {nickname}님의 챌린지를 시작해보세요!
             </span>
             {/* Challenge does not exist */}
-            <button className="btn-challenge">도전하러 가기</button>
+            <button className="btn-challenge" onClick={goToActivityPage}>
+              도전하러 가기
+            </button>
             {/* Challenge exists */}
             <div className="box-challenge">
               <div className="box-challenge-img bg-light-blue">

@@ -65,6 +65,7 @@ import Reward from "./abi/Reward.json";
 import MainPage from "./pages/MainPage";
 import ProfilePage from "./pages/ProfilePage";
 import TokenExchangePage from "./pages/TokenExchangePage";
+import ActivityPage from "./pages/ActivityPage";
 
 //////////////////////
 // Component import //
@@ -387,6 +388,7 @@ function App() {
             />
           }
         />
+        <Route path="/activity" element={<ActivityPage />} />
       </Routes>
       <Footer />
     </div>
