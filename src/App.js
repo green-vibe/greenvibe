@@ -40,7 +40,7 @@
 /**
  * Greenvibe
  * @developer Sueun Cho, Rok Kwak, Eunbeen Jung
- * @version 1.2.1
+ * @version 1.2.2
  */
 
 ////////////////////

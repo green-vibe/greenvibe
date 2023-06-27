@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# 🌱 Greenvibe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Greenvibe-main.png](https://i.postimg.cc/2686DYJ8/Greenvibe-main.png)
 
-## Available Scripts
+## User Flow
 
-In the project directory, you can run:
+1. 유저는 챌린지를 시작하기 전 Metamask에서 로그인을 진행해야 함.
+   - Connect 버튼
+2. 챌린지
+   - 유저는 지도에서 친환경 활동 선택 후 시작해야 함
+     - 활동 시작 시 1 Polygon의 Deposit을 걸어야 함 (악성 방지)
+     - 리워드 시 보증금을 돌려준다는 문구 안내
+   - 활동 지역은 지도에서 선택할 수 있음
+     - 구글 지도 활용
+   - 일정 레벨이 되었을 경우 활동 개설도 가능 (추후 개발)
+3. 챌린지 검증
+   - 활동하며 찍은 4장의 사진을 업로드
+   - 업로드가 완료되면 투표를 시작할 수 있는 버튼이 활성화 됨
+   - 투표 시작
+     - 투표 시작 시 3 Polygon의 Deposit을 걸어야 함 (악성 방지)
+     - 리워드 시 보증금을 돌려준다는 문구 안내
+   - 투표 후 70% 이상의 긍정 투표를 받게 되면 리워드 클레임 요청 가능
+     - 70%를 넘기지 못하면 리워드 클레임 요청하지 못함
+4. 투표
+   - 투표 시 악성 방지를 위해 1개 활동에 1인 1투표 가능
 
-### `npm start`
+### 보상 내용
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 4 Polygon + 리워드를 자체 발행 토큰으로 지급
+  - 활동 지역 설정 시 걸었던 1 Polygon
+  - 투표 시작 시 걸었던 3 Polygon
+- 총 800 Token + 리워드 (1 Polygon = 200 Token)
+  - 비율은 바뀔 수 있음
