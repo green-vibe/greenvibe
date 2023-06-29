@@ -1,0 +1,41 @@
+{
+  "locations": [
+    {
+      "id": 0,
+      "title": "한강에서 쓰레기줍깅",
+      "location": "Hana Global Campus (하나글로벌캠퍼스)",
+      "sDate": "2023.05.19",
+      "eDate": "2023.06.01",
+      "sTime": "10:00 AM",
+      "eTime": "2:00 PM",
+      "lat": 37.508925,
+      "lng": 126.994015,
+      "organization": "Green May",
+      "description": "한강 쓰레기 줍기와 조깅을 동시에! \n 친구들과 한강에서 산책하며 지구를 지켜주세요. \n 산책을 하며 지구 뿐 아니라 나의 건강도 덤으로 지켜요."
+    },
+    {
+      "id": 1,
+      "title": "Yoga by the Lake",
+      "location": "Cheongna Lake Park",
+      "sDate": "2023.05.19",
+      "eDate": "2023.06.01",
+      "sTime": "3:00 PM",
+      "eTime": "6:00 PM",
+      "lat": 37.5378228,
+      "lng": 126.6342741,
+      "organization": "NGO",
+      "description": "'Sunset Salutations: Yoga by the Lake' invites you to stretch, breathe, and find your Zen in the most serene setting - right by our beautiful lake! Let the gentle lapping of the lake's waves guide your breath and the soft rustling of leaves accompany your flow. No prior yoga experience? No worries! This event is perfect for beginners and seasoned yogis alike. Our certified instructors will guide you through poses and sequences that not only improve flexibility and strength, but also connect you deeply with the nature surrounding us. So, bring your yoga mat, invite your friends, and join us for 'Sunset Salutations: Yoga by the Lake'. Let's stretch towards sustainability, one pose at a time, and end the day feeling centered, rejuvenated, and deeply connected to the natural beauty around us. After all, life is better by the lake!"
+    },
+    {
+      "id": 2,
+      "title": "플라스틱 모으기",
+      "location": "공촌유수지체육공원",
+      "sDate": "2023.05.19",
+      "eDate": "2023.06.01",
+      "sTime": "",
+      "eTime": "",
+      "lat": 37.5433854,
+      "lng": 126.616005
+    }
+  ]
+}

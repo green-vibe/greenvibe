@@ -1,8 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useLoadScript, GoogleMap, Marker } from "@react-google-maps/api";
+import {
+  useLoadScript,
+  GoogleMap,
+  Marker,
+  OverlayView,
+} from "@react-google-maps/api";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import Autocomplete from "react-google-autocomplete";
+import imgLocation from "../images/img_location.jpg";
 
 const placesLibrary = ["places"];
 
@@ -10,7 +16,7 @@ const ActivityPage = () => {
   // 현재위치 나타내는 스테이트
   const [currentLocation, setCurrentLocation] = useState(null);
   const [map, setMap] = useState(null);
-  const [markers, setMarkers] = useState([]);
+  const [activity, setActivity] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null);
 
   // 현재위치api호출
@@ -38,16 +44,27 @@ const ActivityPage = () => {
     }
   }, [map, currentLocation]);
 
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
+  const fetchActivity = async () => {
+    let url = `http://localhost:3004/locations`;
+    let res = await fetch(url);
+    let data = await res.json();
+    setActivity(data);
+  };
+
+  useEffect(() => {
+    fetchActivity();
+  }, []);
+
+  const handleActivity = (activity) => {
+    if (activity === activeMarker) {
       return;
     }
-    setActiveMarker(marker);
+    setActiveMarker(activity);
   };
 
   const handleOnLoad = async (map) => {
     const bounds = await new window.google.maps.LatLngBounds();
-    markers.forEach(({ lat, lon }) =>
+    activity.forEach(({ lat, lon }) =>
       bounds.extend(new window.google.maps.LatLng(lat, lon))
     );
     map.fitBounds(bounds);
@@ -77,7 +94,6 @@ const ActivityPage = () => {
             placeholder="챌린지 장소, 주소 검색"
             fontSize="16pt"
             color="#AAAAAA"
-            marginLefg="20px"
             style={{
               boxSizing: `border-box`,
               border: `1px solid transparent`,
@@ -86,7 +102,7 @@ const ActivityPage = () => {
               placeContent: `Search`,
               width: `549px`,
               height: `59px`,
-              padding: `0 12px`,
+              padding: `0 20px`,
               borderRadius: `10pt`,
               boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
               fontSize: `14px`,
@@ -112,6 +128,38 @@ const ActivityPage = () => {
             }}
           />
         )}
+        {activity.map((activeList) => (
+          <Marker
+            key={activeList.id}
+            position={{ lat: activeList.lat, lng: activeList.lng }}
+            onClick={() => handleActivity(activeList.id)}
+            icon={{
+              url: imgLocation,
+              scaledSize: new window.google.maps.Size(30, 30),
+            }}
+          >
+            <OverlayView
+              position={{ lat: activeList.lat, lng: activeList.lng }}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: -13,
+                  left: -55,
+                  backgroundColor: "transparent",
+                  padding: "5px 10px",
+                  borderRadius: "5px",
+                  width: "200px",
+                  fontSize: "8pt",
+                  color: "#222222",
+                }}
+              >
+                {activeList.title}
+              </div>
+            </OverlayView>
+          </Marker>
+        ))}
       </GoogleMap>
     </Wrapper>
   ) : null;
