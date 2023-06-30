@@ -9,6 +9,7 @@ import {
 import { Wrapper } from "@googlemaps/react-wrapper";
 import Autocomplete from "react-google-autocomplete";
 import imgLocation from "../images/img_location.jpg";
+import ActivityShort from "../components/Preview/ActivityShort";
 
 const placesLibrary = ["places"];
 
@@ -27,7 +28,6 @@ const ActivityPage = () => {
       setCurrentLocation({ lat: latitude, lng: longitude });
     });
   }, []);
-
   // 구글맵 로드 (api키), 라이브러리
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAP_API, // Add your API key
@@ -55,11 +55,11 @@ const ActivityPage = () => {
     fetchActivity();
   }, []);
 
-  const handleActivity = (activity) => {
-    if (activity === activeMarker) {
+  const handleActivity = (activeList) => {
+    if (activeList === activeMarker) {
       return;
     }
-    setActiveMarker(activity);
+    setActiveMarker(activeList);
   };
 
   const handleOnLoad = async (map) => {
@@ -79,7 +79,7 @@ const ActivityPage = () => {
       <GoogleMap
         onLoad={handleOnLoad}
         onClick={() => setActiveMarker(null)}
-        mapContainerStyle={{ width: "100%", height: "100vh" }}
+        mapContainerStyle={{ width: "100vw", height: "100vh" }}
         zoom={20}
       >
         <div
@@ -158,6 +158,18 @@ const ActivityPage = () => {
                 {activeList.title}
               </div>
             </OverlayView>
+            {activeMarker === activeList.id && (
+              <OverlayView
+                position={{ lat: activeList.lat, lng: activeList.lng }}
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                // style={{
+                //   display: `flex`,
+                //   justifyContent: `flex-end`,
+                // }}
+              >
+                <ActivityShort activeList={activeList} />
+              </OverlayView>
+            )}
           </Marker>
         ))}
       </GoogleMap>
