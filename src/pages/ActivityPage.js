@@ -68,6 +68,12 @@ const ActivityPage = () => {
       bounds.extend(new window.google.maps.LatLng(lat, lon))
     );
     map.fitBounds(bounds);
+    map.setOptions({
+      zoomControl: false, // 확대 및 축소 버튼 숨김
+      mapTypeControl: false, // 지도 타입 선택 버튼 숨김
+      streetViewControl: false, // Street View 버튼 숨김
+      fullscreenControl: false, // 전체 화면 보기 버튼 숨김
+    });
     setMap(map);
   };
 
@@ -146,7 +152,7 @@ const ActivityPage = () => {
                 style={{
                   position: "absolute",
                   bottom: -13,
-                  left: -55,
+                  left: -100,
                   backgroundColor: "transparent",
                   padding: "5px 10px",
                   borderRadius: "5px",
@@ -162,10 +168,6 @@ const ActivityPage = () => {
               <OverlayView
                 position={{ lat: activeList.lat, lng: activeList.lng }}
                 mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                // style={{
-                //   display: `flex`,
-                //   justifyContent: `flex-end`,
-                // }}
               >
                 <ActivityShort activeList={activeList} />
               </OverlayView>

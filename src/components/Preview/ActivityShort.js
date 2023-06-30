@@ -6,8 +6,9 @@ const ActivityShort = ({ activeList }) => {
     <div
       style={{
         position: "fixed",
-        bottom: "-480px",
-        left: "-197px",
+        top: `10%`,
+        left: "50%",
+        transform: "translate(-100%, 100%)",
       }}
     >
       <div
@@ -15,15 +16,22 @@ const ActivityShort = ({ activeList }) => {
           display: `flex`,
           justifyContent: `space-around`,
           flexDirection: `column`,
+          alignItems: `center`,
           backgroundColor: "#FFFFFF",
-          width: "393px",
+          width: "100vw",
           height: "240px",
           padding: "35px 0 0 22px",
           borderTopLeftRadius: "10px",
           borderTopRightRadius: "10px",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: `349px`,
+          }}
+        >
           <div>
             <div style={{ fontSize: `18pt`, fontWeight: `600` }}>
               {activeList.title}
