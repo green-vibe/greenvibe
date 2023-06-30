@@ -36,10 +36,16 @@ const ActivityShort = ({ activeList }) => {
             <div style={{ fontSize: `18pt`, fontWeight: `600` }}>
               {activeList.title}
             </div>
-            <div style={{ fontSize: `14pt` }}>
+            <div
+              style={{ fontSize: `14pt`, marginTop: `6px`, color: `#AAAAAA` }}
+            >
               {activeList.sDate} ~ {activeList.eDate}
             </div>
-            <div style={{ fontSize: `14pt` }}>{activeList.location}</div>
+            <div
+              style={{ fontSize: `14pt`, marginTop: `10px`, color: `#222222` }}
+            >
+              {activeList.location}
+            </div>
           </div>
           <img
             style={{ width: "80px", height: "80px" }}
@@ -56,6 +62,8 @@ const ActivityShort = ({ activeList }) => {
             height: `44px`,
             border: `#168249 solid 1px`,
             borderRadius: `10pt`,
+            fontSize: `19pt`,
+            color: `#168249`,
             cursor: `pointer`,
           }}
         >
