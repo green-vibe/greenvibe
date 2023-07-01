@@ -129,10 +129,8 @@ const ActivityPage = () => {
                 style={{
                   position: "absolute",
                   bottom: -13,
-                  left: -100,
-                  backgroundColor: "transparent",
+                  left: -53,
                   padding: "5px 10px",
-                  borderRadius: "5px",
                   width: "200px",
                   fontSize: "8px",
                   color: "#222222",
