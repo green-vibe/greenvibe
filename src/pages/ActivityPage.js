@@ -1,17 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  useLoadScript,
-  GoogleMap,
-  Marker,
-  OverlayView,
-} from "@react-google-maps/api";
-import { Wrapper } from "@googlemaps/react-wrapper";
+import { GoogleMap, Marker, OverlayView } from "@react-google-maps/api";
 import Autocomplete from "react-google-autocomplete";
 import imgLocation from "../images/img_location.jpg";
 import ActivityShort from "../components/Activity/ActivityShort";
 
-const placesLibrary = ["places"];
+// const placesLibrary = ["places"];
 
 const ActivityPage = () => {
   // 현재위치 나타내는 스테이트
@@ -29,11 +23,11 @@ const ActivityPage = () => {
     });
   }, []);
 
-  // 구글맵 로드 (api키), 라이브러리
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_MAP_API, // Add your API key
-    libraries: placesLibrary,
-  });
+  // // 구글맵 로드 (api키), 라이브러리
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: process.env.REACT_APP_MAP_API, // Add your API key
+  //   libraries: placesLibrary,
+  // });
 
   useEffect(() => {
     if (map && currentLocation) {
@@ -78,8 +72,8 @@ const ActivityPage = () => {
     setMap(map);
   };
 
-  return isLoaded ? (
-    <Wrapper apiKey={process.env.REACT_APP_MAP_API}>
+  return (
+    <div>
       <GoogleMap
         onLoad={handleOnLoad}
         onClick={() => setActiveMarker(null)}
@@ -100,7 +94,7 @@ const ActivityPage = () => {
           <Marker
             center={currentLocation}
             position={currentLocation}
-            zoom={20}
+            zoom={10}
             icon={{
               path: "M10 20c5.5 0 10-4.5 10-10S15.5 0 10 0 0 4.5 0 10s4.5 10 10 10z",
               strokeWeight: 3,
@@ -133,6 +127,7 @@ const ActivityPage = () => {
                   padding: "5px 10px",
                   width: "200px",
                   fontSize: "8px",
+                  fontWeight: `600`,
                   color: "#222222",
                 }}
               >
@@ -150,8 +145,8 @@ const ActivityPage = () => {
           </Marker>
         ))}
       </GoogleMap>
-    </Wrapper>
-  ) : null;
+    </div>
+  );
 };
 
 export default ActivityPage;
