@@ -70,9 +70,9 @@ import ActivityPage from "./pages/ActivityPage";
 //////////////////////
 // Component import //
 //////////////////////
-import Nav from "./components/layout/Nav";
-import Nav2Depth from "./components/layout/Nav2Depth";
-import Footer from "./components/layout/Footer";
+import Nav from "./components/Layout/Nav";
+import Nav2Depth from "./components/Layout/Nav2Depth";
+import Footer from "./components/Layout/Footer";
 
 /////////
 // CSS //

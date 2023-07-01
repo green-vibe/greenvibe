@@ -9,7 +9,7 @@ import {
 import { Wrapper } from "@googlemaps/react-wrapper";
 import Autocomplete from "react-google-autocomplete";
 import imgLocation from "../images/img_location.jpg";
-import ActivityShort from "../components/Preview/ActivityShort";
+import ActivityShort from "../components/Activity/ActivityShort";
 
 const placesLibrary = ["places"];
 
@@ -20,7 +20,7 @@ const ActivityPage = () => {
   const [activity, setActivity] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null);
 
-  // 현재위치api호출
+  // 현재위치 api호출
   useEffect(() => {
     // 현재위치 찍기
     navigator.geolocation.getCurrentPosition((position) => {
@@ -28,6 +28,7 @@ const ActivityPage = () => {
       setCurrentLocation({ lat: latitude, lng: longitude });
     });
   }, []);
+
   // 구글맵 로드 (api키), 라이브러리
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAP_API, // Add your API key
@@ -78,45 +79,21 @@ const ActivityPage = () => {
   };
 
   return isLoaded ? (
-    <Wrapper
-      apiKey={process.env.REACT_APP_MAP_API}
-      style={{ display: "flex", justifyContent: "center" }}
-    >
+    <Wrapper apiKey={process.env.REACT_APP_MAP_API}>
       <GoogleMap
         onLoad={handleOnLoad}
         onClick={() => setActiveMarker(null)}
-        mapContainerStyle={{ width: "100vw", height: "100vh" }}
+        mapContainerStyle={{
+          width: "100vw",
+          height: "100vh",
+          paddingTop: "64px",
+        }}
         zoom={20}
       >
-        <div
-          style={{
-            marginTop: "92px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <div className="box-activity-input">
           <Autocomplete
             apiKey={process.env.REACT_APP_MAP_API}
             placeholder="챌린지 장소, 주소 검색"
-            fontSize="16pt"
-            color="#AAAAAA"
-            style={{
-              boxSizing: `border-box`,
-              border: `1px solid transparent`,
-              placeholder: `search`,
-              backgroundColor: `#FFFFFF`,
-              placeContent: `Search`,
-              width: `549px`,
-              height: `59px`,
-              padding: `0 20px`,
-              borderRadius: `10pt`,
-              boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-              fontSize: `14px`,
-              outline: `none`,
-              textOverflow: `ellipses`,
-              position: "absolute",
-              zIndex: "1",
-            }}
           ></Autocomplete>
         </div>
         {currentLocation && (
@@ -157,7 +134,7 @@ const ActivityPage = () => {
                   padding: "5px 10px",
                   borderRadius: "5px",
                   width: "200px",
-                  fontSize: "8pt",
+                  fontSize: "8px",
                   color: "#222222",
                 }}
               >

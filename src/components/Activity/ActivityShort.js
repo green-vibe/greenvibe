@@ -33,16 +33,16 @@ const ActivityShort = ({ activeList }) => {
           }}
         >
           <div>
-            <div style={{ fontSize: `18pt`, fontWeight: `600` }}>
+            <div style={{ fontSize: `18px`, fontWeight: `600` }}>
               {activeList.title}
             </div>
             <div
-              style={{ fontSize: `14pt`, marginTop: `6px`, color: `#AAAAAA` }}
+              style={{ fontSize: `14px`, marginTop: `6px`, color: `#AAAAAA` }}
             >
               {activeList.sDate} ~ {activeList.eDate}
             </div>
             <div
-              style={{ fontSize: `14pt`, marginTop: `10px`, color: `#222222` }}
+              style={{ fontSize: `14px`, marginTop: `10px`, color: `#222222` }}
             >
               {activeList.location}
             </div>

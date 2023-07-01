@@ -270,6 +270,29 @@
   object-fit: cover;
 }
 
+/* ///////////// */
+/* Activity Page */
+/* ///////////// */
+.box-activity-input {
+  position: relative;
+  padding: 28px 22px 0;
+}
+
+.box-activity-input > input.pac-target-input {
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px #0003;
+  color: #222222;
+  font-size: 16px;
+}
+
+.box-activity-input > input.pac-target-input::placeholder {
+  color: #aaaaaa;
+}
+
 /* //////////// */
 /* Profile Page */
 /* //////////// */
