@@ -135,12 +135,7 @@ const ActivityPage = () => {
               </div>
             </OverlayView>
             {activeMarker === activeList.id && (
-              <OverlayView
-                position={{ lat: activeList.lat, lng: activeList.lng }}
-                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-              >
-                <ActivityShort activeList={activeList} />
-              </OverlayView>
+              <ActivityShort activeList={activeList} />
             )}
           </Marker>
         ))}

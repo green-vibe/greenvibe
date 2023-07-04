@@ -627,9 +627,7 @@
 /* ActivityShort */
 .box-short-form-location{
   position: fixed;
-  top: 10%;
-  left: 50%;
-  transform: translate(-100%, 100%);
+  top: 75%;
 }
 
 .box-short-form{
@@ -684,4 +682,11 @@
   border: solid 1px #168249;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* ActivityDetails */
+.activity-detail{
+  width: 100vw;
+  height: 65vh;
+  background-color: #FFFFFF;
 }

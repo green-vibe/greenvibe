@@ -1,7 +1,7 @@
 import React from "react";
 import activityImg from "../../images/activity_preview.jpg";
 
-const ActivityShort = ({ activeList }) => {
+const ActivityShort = ({ onViewActivityDetail, activeList }) => {
   return (
     <div className="box-short-form-location">
       <div className="box-short-form">
@@ -15,7 +15,9 @@ const ActivityShort = ({ activeList }) => {
           </div>
           <img src={activityImg} alt="img" />
         </div>
-        <div className="btn-view-detail">자세히 보기</div>
+        <div onClick={onViewActivityDetail} className="btn-view-detail">
+          자세히 보기
+        </div>
       </div>
     </div>
   );
