@@ -831,7 +831,7 @@
   text-align: center;
   font-size: 18px;
   font-weight: 600;
-  margin-top: 38px;
+  margin-top: 40px;
 }
 .deposit-rule{
   font-size: 14px;
@@ -871,5 +871,5 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 배경을 흐리게(blur)하는 회색 배경색을 설정합니다. */
+  background-color: #2222224D
 }
