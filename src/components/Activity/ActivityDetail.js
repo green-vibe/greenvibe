@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import activityImg from "../../images/recycle-img.jpg";
 import Description from "./Description";
+import Confirm from "./Confirm";
 
 const ActivityDetail = ({ activeList, onCloseActivityDetail }) => {
+  const [confirmModal, setConfirmModal] = useState(false);
+
   const closeActivityDetail = () => {
     onCloseActivityDetail(true);
+  };
+
+  const showConfirm = () => {
+    setConfirmModal(true);
   };
 
   return (
@@ -41,9 +48,17 @@ const ActivityDetail = ({ activeList, onCloseActivityDetail }) => {
             <div>모든 챌린지는 악용 방지를 위해 보증금을 필요로 합니다.</div>
             <div>보증금은 보상을 받을 때 포함하여 돌려드립니다.</div>
           </div>
-          <div className="rule-start">챌린지 시작하기</div>
+          <div className="rule-start" onClick={showConfirm}>
+            챌린지 시작하기
+          </div>
         </div>
       </div>
+      {confirmModal && (
+        <div className="modal-background">
+          <div className="modal-overlay" />
+          <Confirm activeList={activeList} setConfirmModal={setConfirmModal} />
+        </div>
+      )}
     </div>
   );
 };

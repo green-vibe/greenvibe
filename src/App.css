@@ -688,6 +688,7 @@
 .box-detail-form-location{
   position: fixed;
   top: 19%;
+  z-index: 998;
 }
 
 .box-detail-form{
@@ -803,4 +804,72 @@
   color: #FFFFFF;
   border-radius: 10px;
   margin: 15px 0 22px 0;
+}
+
+/* Confirm.js */
+.background-modal{
+  background-color: #2222224D;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+.confirm-modal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 349px;
+  height: 210px;
+  background-color: #FFFFFF;
+  transform: translate(7%, -260%);
+  border-radius: 10px;
+  z-index: 997;
+}
+.title-activity-start{
+  width: 100vw;
+  height: 48px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 38px;
+}
+.deposit-rule{
+  font-size: 14px;
+  color: #AAAAAA;
+  margin-top: 40px;
+}
+.cancel-start{
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.cancel-start div:nth-child(1){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+  height: 50px;
+  background-color: #DDDDDD;
+  border-bottom-left-radius: 10px;
+  color: #FFFFFF;
+}
+.cancel-start div:nth-child(2){
+  width: 175px;
+  height: 50px;
+  background-color: #168249;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+  height: 50px;
+  color: #FFFFFF;
+  border-bottom-right-radius: 10px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 배경을 흐리게(blur)하는 회색 배경색을 설정합니다. */
 }
