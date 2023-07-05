@@ -11,6 +11,7 @@
       "lat": 37.508925,
       "lng": 126.994015,
       "organization": "Green May",
+      "reward": 400,
       "description": "한강 쓰레기 줍기와 조깅을 동시에! \n 친구들과 한강에서 산책하며 지구를 지켜주세요. \n 산책을 하며 지구 뿐 아니라 나의 건강도 덤으로 지켜요."
     },
     {
@@ -24,7 +25,8 @@
       "lat": 37.516116,
       "lng": 126.973116,
       "organization": "NGO",
-      "description": "'Sunset Salutations: Yoga by the Lake' invites you to stretch, breathe, and find your Zen in the most serene setting - right by our beautiful lake! Let the gentle lapping of the lake's waves guide your breath and the soft rustling of leaves accompany your flow. No prior yoga experience? No worries! This event is perfect for beginners and seasoned yogis alike. Our certified instructors will guide you through poses and sequences that not only improve flexibility and strength, but also connect you deeply with the nature surrounding us. So, bring your yoga mat, invite your friends, and join us for 'Sunset Salutations: Yoga by the Lake'. Let's stretch towards sustainability, one pose at a time, and end the day feeling centered, rejuvenated, and deeply connected to the natural beauty around us. After all, life is better by the lake!"
+      "reward": 700,
+      "description": "한강 쓰레기 줍기와 조깅을 동시에! \n 친구들과 한강에서 산책하며 지구를 지켜주세요. \n 산책을 하며 지구 뿐 아니라 나의 건강도 덤으로 지켜요."
     },
     {
       "id": 2,
@@ -35,7 +37,9 @@
       "sTime": "",
       "eTime": "",
       "lat": 37.575985,
-      "lng": 127.017712
+      "lng": 127.017712,
+      "reward": 500,
+      "description": "숭인공원 쓰레기 줍기와 등산을 동시에! \n 운동삼아 산책하며 지구를 지켜주세요. \n 산책을 하며 지구 뿐 아니라 나의 건강도 덤으로 지켜요."
     },
     {
       "id": 3,
@@ -46,7 +50,9 @@
       "sTime": "",
       "eTime": "",
       "lat": 37.621645,
-      "lng": 126.715181
+      "lng": 126.715181,
+      "reward": 900,
+      "description": "김포공원 쓰레기 줍기와 조깅을 동시에! \n 연인과 환경정화 데이트하면서 지구를 지켜주세요. \n 산책을 하며 지구 뿐 아니라 나의 건강도 덤으로 지켜요."
     }
   ]
 }

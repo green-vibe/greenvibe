@@ -4,6 +4,7 @@ import { GoogleMap, Marker, OverlayView } from "@react-google-maps/api";
 import Autocomplete from "react-google-autocomplete";
 import imgLocation from "../images/img_location.jpg";
 import ActivityShort from "../components/Activity/ActivityShort";
+import ActivityDetail from "../components/Activity/ActivityDetail";
 
 // const placesLibrary = ["places"];
 
@@ -13,6 +14,8 @@ const ActivityPage = () => {
   const [map, setMap] = useState(null);
   const [activity, setActivity] = useState([]);
   const [activeMarker, setActiveMarker] = useState(null);
+  const [showActivityShort, setShowActivityShort] = useState(false);
+  const [showActivityDetail, setShowActivityDetail] = useState(false);
 
   // 현재위치 api호출
   useEffect(() => {
@@ -22,12 +25,6 @@ const ActivityPage = () => {
       setCurrentLocation({ lat: latitude, lng: longitude });
     });
   }, []);
-
-  // // 구글맵 로드 (api키), 라이브러리
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: process.env.REACT_APP_MAP_API, // Add your API key
-  //   libraries: placesLibrary,
-  // });
 
   useEffect(() => {
     if (map && currentLocation) {
@@ -72,6 +69,14 @@ const ActivityPage = () => {
     setMap(map);
   };
 
+  const onViewActivityDetail = () => {
+    setShowActivityDetail(true);
+  };
+
+  const onCloseActivityDetail = () => {
+    setShowActivityDetail(false);
+  };
+
   return (
     <div>
       <GoogleMap
@@ -84,61 +89,126 @@ const ActivityPage = () => {
         }}
         zoom={20}
       >
-        <div className="box-activity-input">
-          <Autocomplete
-            apiKey={process.env.REACT_APP_MAP_API}
-            placeholder="챌린지 장소, 주소 검색"
-          ></Autocomplete>
-        </div>
-        {currentLocation && (
-          <Marker
-            center={currentLocation}
-            position={currentLocation}
-            zoom={10}
-            icon={{
-              path: "M10 20c5.5 0 10-4.5 10-10S15.5 0 10 0 0 4.5 0 10s4.5 10 10 10z",
-              strokeWeight: 3,
-              strokeColor: "#FFFFFF",
-              fillColor: "#386DFF",
-              fillOpacity: 1,
-              scale: 1,
-            }}
-          />
-        )}
-        {activity.map((activeList) => (
-          <Marker
-            key={activeList.id}
-            position={{ lat: activeList.lat, lng: activeList.lng }}
-            onClick={() => handleActivity(activeList.id)}
-            icon={{
-              url: imgLocation,
-              scaledSize: new window.google.maps.Size(30, 30),
-            }}
-          >
-            <OverlayView
-              position={{ lat: activeList.lat, lng: activeList.lng }}
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: -13,
-                  left: -53,
-                  padding: "5px 10px",
-                  width: "200px",
-                  fontSize: "8px",
-                  fontWeight: `600`,
-                  color: "#222222",
+        {showActivityDetail ? (
+          <div>
+            {currentLocation && (
+              <Marker
+                center={currentLocation}
+                position={currentLocation}
+                zoom={10}
+                icon={{
+                  path: "M10 20c5.5 0 10-4.5 10-10S15.5 0 10 0 0 4.5 0 10s4.5 10 10 10z",
+                  strokeWeight: 3,
+                  strokeColor: "#FFFFFF",
+                  fillColor: "#386DFF",
+                  fillOpacity: 1,
+                  scale: 1,
+                }}
+              />
+            )}
+            {activity.map((activeList) => (
+              <Marker
+                key={activeList.id}
+                position={{ lat: activeList.lat, lng: activeList.lng }}
+                onClick={() => handleActivity(activeList.id)}
+                icon={{
+                  url: imgLocation,
+                  scaledSize: new window.google.maps.Size(30, 30),
                 }}
               >
-                {activeList.title}
-              </div>
-            </OverlayView>
-            {activeMarker === activeList.id && (
-              <ActivityShort activeList={activeList} />
-            )}
-          </Marker>
-        ))}
+                <OverlayView
+                  position={{ lat: activeList.lat, lng: activeList.lng }}
+                  mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: -13,
+                      left: -53,
+                      padding: "5px 10px",
+                      width: "200px",
+                      fontSize: "8px",
+                      fontWeight: `600`,
+                      color: "#222222",
+                    }}
+                  >
+                    {activeList.title}
+                  </div>
+                </OverlayView>
+                {activeMarker === activeList.id && (
+                  <ActivityDetail
+                    onCloseActivityDetail={onCloseActivityDetail}
+                    unViewActivityShort={showActivityShort}
+                    activeList={activeList}
+                  />
+                )}
+              </Marker>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <div className="box-activity-input">
+              <Autocomplete
+                apiKey={process.env.REACT_APP_MAP_API}
+                placeholder="챌린지 장소, 주소 검색"
+              ></Autocomplete>
+            </div>
+            <div>
+              {currentLocation && (
+                <Marker
+                  center={currentLocation}
+                  position={currentLocation}
+                  zoom={10}
+                  icon={{
+                    path: "M10 20c5.5 0 10-4.5 10-10S15.5 0 10 0 0 4.5 0 10s4.5 10 10 10z",
+                    strokeWeight: 3,
+                    strokeColor: "#FFFFFF",
+                    fillColor: "#386DFF",
+                    fillOpacity: 1,
+                    scale: 1,
+                  }}
+                />
+              )}
+              {activity.map((activeList) => (
+                <Marker
+                  key={activeList.id}
+                  position={{ lat: activeList.lat, lng: activeList.lng }}
+                  onClick={() => handleActivity(activeList.id)}
+                  icon={{
+                    url: imgLocation,
+                    scaledSize: new window.google.maps.Size(30, 30),
+                  }}
+                >
+                  <OverlayView
+                    position={{ lat: activeList.lat, lng: activeList.lng }}
+                    mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: -13,
+                        left: -53,
+                        padding: "5px 10px",
+                        width: "200px",
+                        fontSize: "8px",
+                        fontWeight: `600`,
+                        color: "#222222",
+                      }}
+                    >
+                      {activeList.title}
+                    </div>
+                  </OverlayView>
+                  {activeMarker === activeList.id && (
+                    <ActivityShort
+                      onViewActivityDetail={onViewActivityDetail}
+                      activeList={activeList}
+                    />
+                  )}
+                </Marker>
+              ))}
+            </div>
+          </div>
+        )}
       </GoogleMap>
     </div>
   );
