@@ -1,6 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Confirm = ({ setConfirmModal, activeList }) => {
+  const navigator = useNavigate();
+  const goToImgUploadPage = () => {
+    navigator(`/activity/${activeList.id}`);
+  };
   const cancleActivity = () => {
     setConfirmModal(false);
   };
@@ -16,7 +21,7 @@ const Confirm = ({ setConfirmModal, activeList }) => {
         </div>
         <div className="cancel-start">
           <div onClick={cancleActivity}>취소</div>
-          <div>시작</div>
+          <div onClick={goToImgUploadPage}>시작</div>
         </div>
       </div>
     </div>
