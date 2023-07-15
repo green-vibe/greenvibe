@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { GoogleMap, Marker, OverlayView } from "@react-google-maps/api";
+
 import Autocomplete from "react-google-autocomplete";
-import imgLocation from "../images/img_location.jpg";
+import imgLocation from "../images/img_location.svg";
 import ActivityShort from "../components/Activity/ActivityShort";
 import ActivityDetail from "../components/Activity/ActivityDetail";
 

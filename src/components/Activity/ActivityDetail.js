@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import activityImg from "../../images/recycle-img.jpg";
+import activityImg from "../../images/img_trash.svg";
+import closeIcon from "../../images/ic_close.svg";
 import Description from "./Description";
 import Confirm from "./Confirm";
 
@@ -17,7 +18,9 @@ const ActivityDetail = ({ activeList, onCloseActivityDetail }) => {
   return (
     <div className="box-detail-form-location">
       <div className="btn-close">
-        <div onClick={closeActivityDetail}>X</div>
+        <div onClick={closeActivityDetail}>
+          <img src={closeIcon} alt="close" />
+        </div>
       </div>
       <div className="box-detail-form">
         <div className="recycle-img-box">
@@ -25,9 +28,7 @@ const ActivityDetail = ({ activeList, onCloseActivityDetail }) => {
         </div>
         <div className="detail-information">
           <div className="info-title">{activeList.title}</div>
-          <div className="info-activity">
-            <Description activeList={activeList} />
-          </div>
+          <Description activeList={activeList} />
           <div className="duration-location-reward">
             <div>
               챌린지 기간{" "}

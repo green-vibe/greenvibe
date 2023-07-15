@@ -1,5 +1,5 @@
 import React from "react";
-import activityImg from "../../images/activity_preview.jpg";
+import activityImg from "../../images/img_trash.svg";
 
 const ActivityShort = ({ onViewActivityDetail, activeList }) => {
   const viewDetail = () => {
@@ -16,7 +16,9 @@ const ActivityShort = ({ onViewActivityDetail, activeList }) => {
             </div>
             <div className="location-text">{activeList.location}</div>
           </div>
-          <img src={activityImg} alt="img" />
+          <div className="box-activity-img">
+            <img src={activityImg} alt="activity" />
+          </div>
         </div>
         <div onClick={viewDetail} className="btn-view-detail">
           자세히 보기

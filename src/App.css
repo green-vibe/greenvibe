@@ -296,93 +296,93 @@
 /* //////////////////// */
 /* ActivityImageUp Page */
 /* //////////////////// */
-.activity-information{
+.activity-information {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 64px 0 0 0;
   width: 100vw;
   height: 288px;
-  background-color: #EDFFF6;
+  background-color: #edfff6;
 }
-.activity-information>img{
+.activity-information > img {
   width: 164px;
   height: 164px;
 }
-.act-detail-title{
+.act-detail-title {
   font-size: 18px;
   font-weight: 600;
   color: #222222;
 }
-.act-detail-period{
+.act-detail-period {
   font-size: 14px;
   font-weight: normal;
   margin-top: 15px;
   color: #222222;
 }
-.act-detail-location{
+.act-detail-location {
   font-size: 14px;
   font-weight: normal;
   color: #222222;
 }
-.act-detail-reward{
+.act-detail-reward {
   margin-top: 15px;
 }
-.act-detail-reward span:nth-child(1){
+.act-detail-reward span:nth-child(1) {
   font-size: 14px;
   font-weight: 600;
   margin-right: 15px;
   color: #222222;
 }
-.act-detail-reward span:nth-child(2){
+.act-detail-reward span:nth-child(2) {
   font-size: 14px;
   font-weight: normal;
   color: #222222;
 }
-.activity-text-ing{
+.activity-text-ing {
   padding-left: 22px;
   font-size: 18px;
   font-weight: 600;
   color: #222222;
 }
-.img-information{
+.img-information {
   margin-top: 30px;
 }
-.img-upload-box{
+.img-upload-box {
   display: flex;
   justify-content: center;
 }
-.img-upload{
+.img-upload {
   width: 175px;
   height: 175px;
-  background-color: #AAAAAA;
+  background-color: #aaaaaa;
 }
-.voting-button-box{
+.voting-button-box {
   margin-top: 30px;
 }
-.voting-rule div:nth-child(1){
+.voting-rule div:nth-child(1) {
   display: flex;
   justify-content: center;
   font-size: 12px;
   font-weight: normal;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
-.voting-rule div:nth-child(2){
+.voting-rule div:nth-child(2) {
   display: flex;
   justify-content: center;
   font-size: 12px;
   font-weight: normal;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
-.btn-votingup{
+.btn-votingup {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 349px;
   height: 44px;
-  background-color: #AAAAAA;
+  background-color: #aaaaaa;
   margin: 15px 0 0 22px;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 10px;
 }
 
@@ -718,57 +718,64 @@
 /* ////////////////// */
 
 /* ActivityShort */
-.box-short-form-location{
+.box-short-form-location {
   position: fixed;
-  top: 75%;
+  bottom: 0;
 }
 
-.box-short-form{
+.box-short-form {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 100vw;
-  height: 25vh;
-  padding: 10px 0 0 0;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  height: 204px;
+  padding: 30px 22px;
+  border-radius: 20px 20px 0 0;
 }
 
-.box-information{
+.box-information {
   display: flex;
   justify-content: space-between;
-  width: 349px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.title-text{
+.title-text {
   font-size: 18px;
   font-weight: 600;
 }
 
-.date-text{
+.date-text {
   font-size: 14px;
-  color: #AAAAAA;
+  color: #aaaaaa;
   margin-top: 6px;
 }
 
-.location-text{
+.location-text {
   font-size: 14px;
   margin-top: 10px;
   color: #222222;
 }
 
-.box-short-form>div>img{
+.box-activity-img {
   width: 80px;
   height: 80px;
+  background-color: #edfff6;
+  border-radius: 10px;
 }
 
-.btn-view-detail{
+.box-short-form > div > img {
+  width: 75px;
+  height: 75px;
+}
+
+.btn-view-detail {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 349px;
+  width: 100%;
   height: 44px;
   color: #168249;
   font-size: 16px;
@@ -778,147 +785,158 @@
 }
 
 /* ActivityDetails */
-.box-detail-form-location{
+.box-detail-form-location {
   position: fixed;
-  top: 19%;
-  z-index: 998;
+  bottom: 0;
 }
 
-.box-detail-form{
+.box-detail-form {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 74vh;
-  background-color: #FFFFFF;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  height: 625px;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
 }
-.recycle-img-box{
+
+.recycle-img-box {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 220px;
-  background-color: #EDFFF6;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  background-color: #edfff6;
+  border-radius: 20px 20px 0 0;
 }
 
-.recycle-img-box>img{
+.recycle-img-box > img {
   width: 164px;
   height: 164px;
 }
 
-.btn-close{
+.btn-close {
   display: flex;
   justify-content: flex-end;
 }
-.btn-close>div{
+
+.btn-close > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 50px;
   height: 50px;
   font-size: 20px;
   border-radius: 50px;
   margin: 0 22px 15px 0;
+  box-shadow: 0 3px 6px #0003;
   cursor: pointer;
 }
-.detail-information{
+
+.detail-information {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   width: 100vw;
-  padding-left: 22px;
+  padding: 30px 22px 0;
 }
-.info-title{
+
+.info-title {
   font-size: 18px;
   font-weight: 600;
-  margin-top: 30px;
 }
-.info-activity{
-  color: #AAAAAA;
+
+.info-activity {
+  color: #aaaaaa;
   margin-top: 15px;
   font-size: 14px;
+  line-height: 1.4;
 }
-.duration-location-reward{
+
+.duration-location-reward {
   margin-top: 30px;
 }
-.duration-location-reward div{
+
+.duration-location-reward div {
   margin-bottom: 10px;
 }
-.duration-location-reward div:nth-child(1){
+
+.duration-location-reward div:nth-child(1) {
   font-weight: 600;
   font-size: 14px;
 }
-.duration-location-reward div:nth-child(2){
+
+.duration-location-reward div:nth-child(2) {
   font-weight: 600;
   font-size: 14px;
 }
-.duration-location-reward div:nth-child(3){
+
+.duration-location-reward div:nth-child(3) {
   font-weight: 600;
   font-size: 14px;
 }
-.duration-location-reward span{
+
+.duration-location-reward span {
   margin-left: 17px;
   font-weight: normal;
   font-size: 14px;
 }
-.notice-rule{
+
+.notice-rule {
   font-size: 12px;
   font-weight: normal;
-  margin-top: 60px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
 }
-.notice-rule div:nth-child(1){
+
+.notice-rule div:nth-child(1) {
   display: flex;
   justify-content: center;
   margin-bottom: 2px;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
-.notice-rule div:nth-child(2){
+
+.notice-rule div:nth-child(2) {
   display: flex;
   justify-content: center;
-  color: #AAAAAA;
+  color: #aaaaaa;
 }
-.rule-start{
+
+.rule-start {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 349px;
   height: 44px;
   background-color: #168249;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 10px;
-  margin: 15px 0 22px 0;
+  margin: 15px 0 30px 0;
 }
 
 /* Confirm.js */
-.background-modal{
-  background-color: #2222224D;
+.background-modal {
+  background-color: #2222224d;
   width: 100vw;
   height: 100vh;
   z-index: 1;
 }
-.confirm-modal{
+.confirm-modal {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 349px;
   height: 210px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   transform: translate(7%, -260%);
   border-radius: 10px;
   z-index: 997;
 }
-.title-activity-start{
+.title-activity-start {
   width: 100vw;
   height: 48px;
   text-align: center;
@@ -926,27 +944,27 @@
   font-weight: 600;
   margin-top: 40px;
 }
-.deposit-rule{
+.deposit-rule {
   font-size: 14px;
-  color: #AAAAAA;
+  color: #aaaaaa;
   margin-top: 40px;
 }
-.cancel-start{
+.cancel-start {
   display: flex;
   justify-content: center;
   margin-top: 15px;
 }
-.cancel-start div:nth-child(1){
+.cancel-start div:nth-child(1) {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 175px;
   height: 50px;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
   border-bottom-left-radius: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.cancel-start div:nth-child(2){
+.cancel-start div:nth-child(2) {
   width: 175px;
   height: 50px;
   background-color: #168249;
@@ -955,7 +973,7 @@
   align-items: center;
   width: 175px;
   height: 50px;
-  color: #FFFFFF;
+  color: #ffffff;
   border-bottom-right-radius: 10px;
 }
 .modal-overlay {
@@ -964,5 +982,5 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #2222224D
+  background-color: #2222224d;
 }
