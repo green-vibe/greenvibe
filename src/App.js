@@ -4,15 +4,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Web3 from "web3";
-
-////////////////////////
-// Smart Contract ABI //
-////////////////////////
-import ERC20 from "./abi/ERC20.json";
-import ERC721 from "./abi/ERC721.json";
-// import ERC1155 from "./abi/ERC1155.json";
-import Reward from "./abi/Reward.json";
 
 /////////////////
 // Page import //
@@ -45,7 +36,6 @@ function App() {
   // State //
   ///////////
   let userState = useSelector((state) => state.user);
-  let contractState = useSelector((state) => state.contract);
 
   ///////////////////////////////////
   // Set Connect Metamask function //

@@ -11,7 +11,6 @@ import icProfile from "../../images/ic_profile.svg";
 
 const Nav = ({ connectToMetaMask }) => {
   const navigate = useNavigate();
-
   let currentAccounts = useSelector((state) => state.user.currentAccounts);
 
   // Main 이동
